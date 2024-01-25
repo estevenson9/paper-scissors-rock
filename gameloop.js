@@ -85,19 +85,19 @@ function gameplayLoop() {
     while (true) {
       let input = playerChoice();
       if (input === "paper" || input === "rock" || input === "scissors") {
-        console.log("Player chose " + `${input}`);
+        console.log(`Player chose ${input}`);
         playerVal = input;
         break;
       }
     }
     let computerVal = getComputerChoice();
 
-    console.log("Computer chose " + `${computerVal}`);
+    console.log(`Computer chose ${computerVal}`);
     let results = gameplayLogic(playerVal, computerVal);
     for (let index = 0; index < score.length; index++) {
       score[index] += results[index];
     }
-    console.log("Player - " + `${score[0]}` + " Computer - " + `${score[1]}`);
+    console.log(`Player - ${score[0]} Computer - ${score[1]}`);
   }
 }
 
