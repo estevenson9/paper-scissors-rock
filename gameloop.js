@@ -21,23 +21,19 @@ function playerChoice() {
 }
 
 function validatePlayerChoice(input) {
-  let inputToCheck = input;
+  console.log(input);
+  let inputToCheck = input.toLowerCase();
+  console.log(inputToCheck);
   switch (inputToCheck) {
-    case "Paper":
     case "p":
-    case "P":
     case "paper":
       return "paper";
 
-    case "Rock":
     case "r":
-    case "R":
     case "rock":
       return "rock";
 
-    case "Scissors":
     case "s":
-    case "S":
     case "scissors":
       return "scissors";
 
