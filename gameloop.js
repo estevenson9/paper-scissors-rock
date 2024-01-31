@@ -3,112 +3,76 @@
 const optionBtns = document.querySelectorAll(".options");
 optionBtns.forEach((element) => {
   element.addEventListener("click", () => {
+    let outputResults = document.createElement("div");
+
     console.log(element.value);
   });
 });
-// paperButton.addEventListener("click");
-// scissorsButton.addEventListener("click");
 
-// function getComputerChoice() {
-//   let computerChoice = Math.floor(Math.random() * 3);
-//   switch (computerChoice) {
-//     case 0:
-//       return "paper";
-//     case 1:
-//       return "rock";
-//     case 2:
-//       return "scissors";
-//     default:
-//       console.log("An error ocurred");
-//       break;
-//   }
-// }
+function getComputerChoice() {
+  let computerChoice = Math.floor(Math.random() * 3);
+  switch (computerChoice) {
+    case 0:
+      return "paper";
+    case 1:
+      return "rock";
+    case 2:
+      return "scissors";
+    default:
+      console.log("An error ocurred");
+      break;
+  }
+}
 
-// function playerChoice() {
-//   let input = prompt("Please input your choice [paper, scissors, rock]");
-//   let validatedInput = validatePlayerChoice(input);
-//   return validatedInput;
-// }
+function gameplayLogic(playerInput, computerInput) {
+  const possibleResults = new Map();
+  const keys = [
+    ["scissors", "rock"],
+    ["scissors", "paper"],
+    ["rock", "paper"], //ensure these are ordered correctly so map is created with correct key value pairs
+    ["rock", "scissors"],
+    ["paper", "scissors"],
+    ["paper", "rock"],
+  ];
+  for (let index = 0; index < keys.length; index++) {
+    const values = [0, 1];
+    if (index % 2) {
+      possibleResults.set(keys[index], values.reverse());
+    } else {
+      possibleResults.set(keys[index], values);
+    }
+  }
 
-// function validatePlayerChoice(input) {
-//   console.log(input);
-//   let inputToCheck = input.toLowerCase();
-//   console.log(inputToCheck);
-//   switch (inputToCheck) {
-//     case "p":
-//     case "paper":
-//       return "paper";
+  if (playerInput === computerInput) {
+    return [0, 0];
+  } else {
+    let choicesChosen = [playerInput, computerInput];
+    let checkResult;
+    for (let index = 0; index < keys.length; index++) {
+      if (
+        keys[index][0] === choicesChosen[0] &&
+        keys[index][1] === choicesChosen[1]
+      ) {
+        checkResult = keys[index];
+      }
+    }
+    return possibleResults.get(checkResult);
+  }
+}
 
-//     case "r":
-//     case "rock":
-//       return "rock";
+function gameplayLoop() {
+  let playerVal = "";
+  let score = [0, 0];
+  while (true) {
+    let computerVal = getComputerChoice();
 
-//     case "s":
-//     case "scissors":
-//       return "scissors";
+    console.log(`Computer chose ${computerVal}`);
+    let results = gameplayLogic(playerVal, computerVal);
+    for (let index = 0; index < score.length; index++) {
+      score[index] += results[index];
+    }
+    console.log(`Player - ${score[0]} Computer - ${score[1]}`);
+  }
+}
 
-//     default:
-//       return "Please choose a correct value";
-//   }
-// }
-
-// function gameplayLogic(playerInput, computerInput) {
-//   const possibleResults = new Map();
-//   const keys = [
-//     ["scissors", "rock"],
-//     ["scissors", "paper"],
-//     ["rock", "paper"], //ensure these are ordered correctly so map is created with correct key value pairs
-//     ["rock", "scissors"],
-//     ["paper", "scissors"],
-//     ["paper", "rock"],
-//   ];
-//   for (let index = 0; index < keys.length; index++) {
-//     const values = [0, 1];
-//     if (index % 2) {
-//       possibleResults.set(keys[index], values.reverse());
-//     } else {
-//       possibleResults.set(keys[index], values);
-//     }
-//   }
-
-//   if (playerInput === computerInput) {
-//     return [0, 0];
-//   } else {
-//     let choicesChosen = [playerInput, computerInput];
-//     let checkResult;
-//     for (let index = 0; index < keys.length; index++) {
-//       if (
-//         keys[index][0] === choicesChosen[0] &&
-//         keys[index][1] === choicesChosen[1]
-//       ) {
-//         checkResult = keys[index];
-//       }
-//     }
-//     return possibleResults.get(checkResult);
-//   }
-// }
-
-// function gameplayLoop() {
-//   let playerVal = "";
-//   let score = [0, 0];
-//   while (true) {
-//     while (true) {
-//       let input = playerChoice();
-//       if (input === "paper" || input === "rock" || input === "scissors") {
-//         console.log(`Player chose ${input}`);
-//         playerVal = input;
-//         break;
-//       }
-//     }
-//     let computerVal = getComputerChoice();
-
-//     console.log(`Computer chose ${computerVal}`);
-//     let results = gameplayLogic(playerVal, computerVal);
-//     for (let index = 0; index < score.length; index++) {
-//       score[index] += results[index];
-//     }
-//     console.log(`Player - ${score[0]} Computer - ${score[1]}`);
-//   }
-// }
-
-// gameplayLoop();
+gameplayLoop();
