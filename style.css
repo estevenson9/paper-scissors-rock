@@ -1,0 +1,17 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  border-style: dashed;
+}
+.body {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+.main-game {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
