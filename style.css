@@ -12,16 +12,26 @@ html {
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  background-color: teal;
+  background-color: #1a2435;
 }
 header {
   font-size: 2rem;
   text-align: center;
+  color: #e5e7eb;
   width: 100%;
-  background-color: darkblue;
+  background-color: #111827;
+  border-bottom: 1px;
+  border-bottom-style: solid;
+  border-color: #606b79;
 }
 .resultsContainer {
   text-align: center;
+}
+.scoreCard {
+  color: #e5e7eb;
+}
+.announcements {
+  color: #606b79;
 }
 .main-game {
   display: flex;
@@ -29,7 +39,6 @@ header {
   align-items: center;
   width: 100%;
   max-width: 960px;
-  border-style: dotted;
   min-height: 40vh;
 }
 .button-row {
@@ -40,7 +49,6 @@ header {
   flex-shrink: 1;
   justify-content: space-evenly;
   align-items: center;
-  border-style: dashed;
 }
 
 .options {
