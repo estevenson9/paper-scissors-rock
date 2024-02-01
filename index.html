@@ -8,11 +8,27 @@
     <script src="gameloop.js" defer></script>
   </head>
   <body class="body">
-    <header>Paper Scissors Rock</header>
+    <header>
+      <h1>Paper Scissors Rock</h1>
+    </header>
+
+    <div class="resultsContainer">
+      <h2 class="totalResults">Player 0 - 0 Computer</h2>
+      <h3 class="announcements"></h3>
+    </div>
+
     <div class="main-game">
-      <button class="options" value="paper">Paper</button>
-      <button class="options" value="rock">Rock</button>
-      <button class="options" value="scissors">Scissors</button>
+      <div class="button-row">
+        <button class="options" value="paper">Paper</button>
+      </div>
+      <div class="button-row">
+        <button class="options" value="rock">Rock</button>
+      </div>
+      <div class="button-row">
+        <button class="options" value="scissors">Scissors</button>
+      </div>
+    </div>
+
     </div>
     <div class="historyContainer">
       <button class="toggleHistory">Show</button>

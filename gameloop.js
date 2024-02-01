@@ -1,7 +1,7 @@
 "use strict";
 const possibleResults = new Map();
 const optionBtns = document.querySelectorAll(".options");
-const bodyElement = document.querySelector(".body");
+const history = document.querySelector(".history");
 let score = [0, 0];
 optionBtns.forEach((element) => {
   element.addEventListener("click", playRound);
@@ -62,16 +62,19 @@ function playRound() {
 function gameplayLoop(input) {
   let playerVal = input;
   let computerVal = getComputerChoice();
-  let resultsContainer = document.createElement("div");
-  let chosenChoices = document.createElement("p");
-  let roundResults = document.createElement("p");
-  chosenChoices.textContent = `Player chose ${playerVal}, Computer chose ${computerVal}`;
   let results = gameplayLogic(playerVal, computerVal);
   for (let index = 0; index < score.length; index++) {
     score[index] += results[index];
   }
-  roundResults.textContent = `Player - ${score[0]} Computer - ${score[1]}`;
+
+  let resultsContainer = document.createElement("div");
+  let chosenChoices = document.createElement("p");
+  let roundResults = document.createElement("p");
+  chosenChoices.textContent = `Player chose ${playerVal}, Computer chose ${computerVal}`;
+  roundResults.textContent = `Player - ${results[0]} - ${results[1]} Computer`;
   resultsContainer.appendChild(chosenChoices);
   resultsContainer.appendChild(roundResults);
-  bodyElement.appendChild(resultsContainer);
+  resultsContainer.style.cssText = "text-align: center";
+  history.appendChild(resultsContainer);
+  history.style.csstext = "text-align: center";
 }
