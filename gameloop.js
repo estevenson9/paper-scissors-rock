@@ -1,4 +1,6 @@
 "use strict";
+const scoreCard = document.querySelector(".scoreCard");
+const announcement = document.querySelector(".announcements");
 const history = document.querySelector(".history");
 
 const toggleBtn = document.querySelector(".toggleHistory");
@@ -77,7 +79,18 @@ function gameplayLoop(input) {
   for (let index = 0; index < score.length; index++) {
     score[index] += results[index];
   }
-
+  scoreCard.textContent = `Player ${score[0]} - ${score[1]} Computer`;
+  switch (results.toString()) {
+    case [0, 0].toString():
+      announcement.textContent = `It was a tie!`;
+      break;
+    case [1, 0].toString():
+      announcement.textContent = `You beat the Computer!`;
+      break;
+    case [0, 1].toString():
+      announcement.textContent = `The Computer beat you!`;
+      break;
+  }
   let resultsContainer = document.createElement("div");
   let chosenChoices = document.createElement("p");
   let roundResults = document.createElement("p");

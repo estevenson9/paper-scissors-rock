@@ -20,6 +20,9 @@ header {
   width: 100%;
   background-color: darkblue;
 }
+.resultsContainer {
+  text-align: center;
+}
 .main-game {
   display: flex;
   justify-content: space-evenly;
