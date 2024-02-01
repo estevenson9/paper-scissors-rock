@@ -52,6 +52,7 @@ header {
 }
 .history {
   visibility: hidden;
+  height: 100px;
   max-height: 100px;
   overflow: auto;
 }

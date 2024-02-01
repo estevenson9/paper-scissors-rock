@@ -98,5 +98,5 @@ function gameplayLoop(input) {
   roundResults.textContent = `Player ${results[0]} - ${results[1]} Computer`;
   resultsContainer.appendChild(chosenChoices);
   resultsContainer.appendChild(roundResults);
-  history.appendChild(resultsContainer);
+  history.insertBefore(resultsContainer, history.children[0]);
 }
