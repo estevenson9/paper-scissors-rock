@@ -1,12 +1,23 @@
 "use strict";
-const possibleResults = new Map();
-const optionBtns = document.querySelectorAll(".options");
 const history = document.querySelector(".history");
-let score = [0, 0];
+
+const toggleBtn = document.querySelector(".toggleHistory");
+toggleBtn.addEventListener("click", () => {
+  if (toggleBtn.textContent === "Show") {
+    toggleBtn.textContent = "Hide";
+    history.style.cssText = "visibility: visible";
+  } else {
+    toggleBtn.textContent = "Show";
+    history.style.cssText = "visibility: hidden";
+  }
+});
+const optionBtns = document.querySelectorAll(".options");
 optionBtns.forEach((element) => {
   element.addEventListener("click", playRound);
 });
 
+let score = [0, 0];
+const possibleResults = new Map();
 const keys = [
   ["scissors", "rock"],
   ["scissors", "paper"],
@@ -71,10 +82,8 @@ function gameplayLoop(input) {
   let chosenChoices = document.createElement("p");
   let roundResults = document.createElement("p");
   chosenChoices.textContent = `Player chose ${playerVal}, Computer chose ${computerVal}`;
-  roundResults.textContent = `Player - ${results[0]} - ${results[1]} Computer`;
+  roundResults.textContent = `Player ${results[0]} - ${results[1]} Computer`;
   resultsContainer.appendChild(chosenChoices);
   resultsContainer.appendChild(roundResults);
-  resultsContainer.style.cssText = "text-align: center";
   history.appendChild(resultsContainer);
-  history.style.csstext = "text-align: center";
 }
